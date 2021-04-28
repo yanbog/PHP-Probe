@@ -190,21 +190,21 @@
                 <td class="info-main"><?=$info['php_sapi_name'];?></td>
             </tr>
             <tr>
-                <th class="info-title">PHPINFO</th>
+                <th class="info-title"><abbr title="phpinfo">PHPINFO</abbr></th>
                 <td class="info-main"><?=$phpinfo;?></td>
-                <th class="info-title"><?=$lang['session'].' '.$lang['id'];?></th>
+                <th class="info-title"><abbr title="PHPSESSID"><?=$lang['session'].' '.$lang['id'];?></abbr></th>
                 <td class="info-main"><?=$info['session_id'];?></td>
             </tr>
             <tr>
-                <th class="info-title"><?=$lang['display'].$lang['error']?></th>
+                <th class="info-title"><abbr title="display_errors"><?=$lang['display'].$lang['error']?></abbr></th>
                 <td class="info-main"><?=$phperror;?></td>
-                <th class="info-title"><?=$lang['global'].$lang['register']?></th>
+                <th class="info-title"><abbr title="register_globals"><?=$lang['global'].$lang['register']?></abbr></th>
                 <td class="info-main"><?=$globalreg;?></td>
             </tr>
             <tr>
-                <th class="info-title"><?=$lang['short'].$lang['tag']?></th>
+                <th class="info-title"><abbr title="short_open_tag"><?=$lang['short'].$lang['tag']?></abbr></th>
                 <td class="info-main"><?=ini_get('short_open_tag') ? NO : YES;?></td>
-                <th class="info-title"><?=$lang['apache'].$lang['engine']?></th>
+                <th class="info-title"><abbr title="engine"><?=$lang['apache'].$lang['engine']?></abbr></th>
                 <td class="info-main"><?=ini_get('engine') ? YES : NO;?></td>
             </tr>
         </table>
