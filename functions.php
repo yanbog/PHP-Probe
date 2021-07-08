@@ -5,7 +5,7 @@
     
     session_start();
     $app = "PHP Probe";
-    $version = "1.0.0 LTS";
+    $version = "1.0.1 LTS";
     $author = "Microk";
     $website = "https://www.engko.org";
     $reply = "prode@engko.org";
@@ -26,7 +26,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="author" content="Microk" />
+    <meta name="author" content="<?=$author?>" />
     <meta name="reply-to" content="<?=$reply?>" />
     <meta name="copyright" content="2012-<?=date("Y").' '.$author?> &copy;Inc." />
     <meta name="robots" content="all" />

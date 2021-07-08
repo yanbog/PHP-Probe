@@ -5,10 +5,10 @@
     
     session_start();
     $app = "PHP Probe";
-    $version = "1.0.0 LTS";
+    $version = "1.0.1 LTS";
     $author = "Microk";
     $website = "https://www.engko.org";
-    $reply = "prode@engko.org";
+    $reply = "probe@engko.org";
     $github = "https://www.github/yanbog/php-probe";
     $license = "MIT";
 
@@ -18,11 +18,11 @@
     $self = htmlentities($_SERVER['PHP_SELF']);
     $exte = get_loaded_extensions();
 
-    @define(YES, "<span class='mod_enable'>".$lang['enable']."</span>");
-    @define(NO, "<span class='mod_disable'>".$lang['disable']."</span>");
+    @define("YES", "<span class='mod_enable'>".$lang['enable']."</span>");
+    @define("NO", "<span class='mod_disable'>".$lang['disable']."</span>");
 
-    @define(MSGSU, "<span class='msg_success'>".$lang['msg_mysql_success'].':'.$lang['mysql']."-</span>");
-    @define(MSGER, "<span class='msg_error'>".$lang['msg_mysql_error'].': '.$errno."</span>");
+    @define("MSGSU", "<span class='msg_success'>".$lang['msg_mysql_success'].':'.$lang['mysql']."-</span>");
+    @define("MSGER", "<span class='msg_error'>".$lang['msg_mysql_error'].': '.$errno."</span>");
 
     $phpinfo = func_enabled("phpinfo") ? YES : NO;
     $phperror = ini_get("display_errors") ? YES : NO;
@@ -69,7 +69,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="author" content="Microk" />
+    <meta name="author" content="<?=$author?>" />
     <meta name="reply-to" content="<?=$reply?>" />
     <meta name="copyright" content="2012-<?=date("Y").' '.$author?> &copy;Inc." />
     <meta name="robots" content="all" />
@@ -79,7 +79,7 @@
     <title><?=$lang['php'].' '.$lang['probe'].' v'.$version;?></title>
     <link rel="bookmark" href="favicon.ico">
     <link rel="shortcut icon" href="favicon.ico" type="image/ico" sizes="16x16">
-    <style>
+    <style rel="stylesheet">
         body,html{margin: 0;padding: 0;color: #525252;font-size: 14px;font-family: Arial, Helvetica, sans-serif;}
         div#header{position: fixed;top: 0;left: 0;width: 100%;background-color: rgba(0, 0, 0, .5);}
         main,footer{margin: 10px auto;width: 90%;}
