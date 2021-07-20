@@ -4,13 +4,9 @@
     include("common.php");
     
     session_start();
-    $app = "PHP Probe";
-    $version = "1.0.1 LTS";
-    $author = "Microk";
-    $website = "https://www.engko.org";
-    $reply = "prode@engko.org";
-    $github = "https://www.github/yanbog/php-probe";
-    $license = "MIT";
+    
+    // include public
+    include("public/public.php");
 
     $l = get_browser_lang();
     $lang = include("lang/".$l.".php");
