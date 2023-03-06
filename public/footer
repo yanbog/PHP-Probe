@@ -1,7 +1,15 @@
 <center>
-            <p><?=$lang['php'].' '.$lang['probe'].$lang['version']."：v".$version;?> <?=$license;?></p>
-        </center>
-        <hr class="bunting">
-        <center>
-            <p>Copyright &copy; 2012-<?=date("Y");?> <?=$author;?> Inc. All Rights Reserved. Powered by <a href="<?=$website;?>" target="_blank"><?=$author;?></a></p>
-        </center>
+    <p>
+        <?=$lang['php'].' '.$lang['probe'].$lang['version']."：v".$version;?>
+        <?=$license;?>
+    </p>
+</center>
+<hr class="bunting">
+<center>
+    <p>Copyright &copy; 2012-
+        <?=date("Y");?>
+        <?=$author;?> Inc. All Rights Reserved. Powered by <a href="<?=$website;?>" target="_blank">
+        <?=$author;?>
+        </a>
+    </p>
+</center>

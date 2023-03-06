@@ -1,3 +1,5 @@
 <div id="header">
-            <h1><?=$lang['php'].' '.$lang['probe'];?></h1>
-        </div>
+    <h1>
+        <?=$lang['php'].' '.$lang['probe'];?>
+    </h1>
+</div>

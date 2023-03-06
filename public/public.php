@@ -1,7 +1,7 @@
 <?php
 
     $app = "PHP Probe";
-    $version = "1.0.3 LTS";
+    $version = "1.0.5 LTS";
     $author = "Microk";
     $website = "https://www.engko.org";
     $reply = "probe@engko.org";

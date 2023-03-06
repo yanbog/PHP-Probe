@@ -13,6 +13,7 @@
     $info = get_server_info();
     $self = htmlentities($_SERVER['PHP_SELF']);
     $exte = get_loaded_extensions();
+    $func = get_defined_functions();
 
     @define("YES", "<span class='mod_enable'>".$lang['enable']."</span>");
     @define("NO", "<span class='mod_disable'>".$lang['disable']."</span>");
@@ -68,10 +69,10 @@
     <meta name="author" content="<?=$author?>" />
     <meta name="reply-to" content="<?=$reply?>" />
     <meta name="copyright" content="2012-<?=date("Y").' '.$author?> &copy;Inc." />
-    <meta name="robots" content="all" />
+    <meta name="robots" content="none" />
     <meta name="referrer" content="always" />
-    <meta name="keywords" content="PHP,probe,phpinfo," />
-    <meta name="description" content="" />
+    <meta name="keywords" content="PHP,Probe,PHP Probe,phpinfo,PHP探针,PHP服务器探针" />
+    <meta name="description" content="精简版的PHPInfo，快速查看服务器PHP环境配置信息。" />
     <title><?=$lang['php'].' '.$lang['probe'].' v'.$version;?></title>
     <link rel="bookmark" href="favicon.ico">
     <link rel="shortcut icon" href="favicon.ico" type="image/ico" sizes="16x16">
@@ -81,7 +82,7 @@
         main,footer{margin: 10px auto;width: 90%;}
         main{margin-top: 62px;}
         h1{margin: 0 auto;line-height: 42px;text-align: center;color: #fff;}
-        abbr{text-decoration: none;border:0;border-bottom: 1px dotted;cursor: help;}
+        abbr{text-decoration: none;border:0;border-bottom: 1px dashed;cursor: help;padding-bottom: 2px;}
         a{text-decoration: none;color: #4b8bf4;}
         hr.bunting{height:5px;border:0;background:#c4e17f;border-radius:5px;background-image:-webkit-linear-gradient(left,#c4e17f,#c4e17f 12.5%,#f7fdca 12.5%,#f7fdca 25%,#fecf71 25%,#fecf71 37.5%,#f0776c 37.5%,#f0776c 50%,#db9dbe 50%,#db9dbe 62.5%,#c49cde 62.5%,#c49cde 75%,#669ae1 75%,#669ae1 87.5%,#62c2e4 87.5%,#62c2e4);background-image:-moz-linear-gradient(left,#c4e17f,#c4e17f 12.5%,#f7fdca 12.5%,#f7fdca 25%,#fecf71 25%,#fecf71 37.5%,#f0776c 37.5%,#f0776c 50%,#db9dbe 50%,#db9dbe 62.5%,#c49cde 62.5%,#c49cde 75%,#669ae1 75%,#669ae1 87.5%,#62c2e4 87.5%,#62c2e4);background-image:-o-linear-gradient(left,#c4e17f,#c4e17f 12.5%,#f7fdca 12.5%,#f7fdca 25%,#fecf71 25%,#fecf71 37.5%,#f0776c 37.5%,#f0776c 50%,#db9dbe 50%,#db9dbe 62.5%,#c49cde 62.5%,#c49cde 75%,#669ae1 75%,#669ae1 87.5%,#62c2e4 87.5%,#62c2e4);background-image:linear-gradient(to right,#c4e17f,#c4e17f 12.5%,#f7fdca 12.5%,#f7fdca 25%,#fecf71 25%,#fecf71 37.5%,#f0776c 37.5%,#f0776c 50%,#db9dbe 50%,#db9dbe 62.5%,#c49cde 62.5%,#c49cde 75%,#669ae1 75%,#669ae1 87.5%,#62c2e4 87.5%,#62c2e4)}
         main table{margin: 20px 0;}
@@ -91,15 +92,11 @@
         td.info-main{width: 35%;text-align: left;background-color: #f7f7f7;}
         .title-main,.title-sub{color: #fff;}
         .title-sub{background-color: #e3e3e3;}
-        .phpinfo .title-main{background-color: #4b8bf4;}
-        .phpmod .title-main{background-color: #4b8bf4;}
-        .phpparam .title-main{background-color: #4b8bf4;}
-        .phpextend .title-main{background-color: #4b8bf4;}
-        .phpmysql .title-main{background-color: #4b8bf4;}
+        .phpinfo .title-main,.phpmod .title-main,.phpparam .title-main,.phpextend .title-main,.phpmysql .title-main,.phpfunction .title-main,.phpfunction .title-main{background-color: #4b8bf4;}
         .phpparam th.param-t{background-color:#eeeeee;text-align: center;}
         .phpparam td.param-v{background-color: #f7f7f7;text-align: center;}
         ul li{list-style: none;float: left;}
-        ul.extends li{margin: 5px;padding: 0 10px;background-color: #c5d0d7;border-radius: 3px;color: #505a80;line-height: 32px;}
+        ul.extends li,ul.functions li{margin: 5px;padding: 0 10px;background-color: #c5d0d7;border-radius: 6px;color: #505a80;line-height: 32px;cursor: pointer;}
         ul.extends li::before{margin: 2px;line-height: 16px;display: inline-grid;content: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABaUlEQVQ4jbWTz07CQBCH99VMg2ChtLRl2l0oUJBq4sFIiBgXCralUPDgmxgvvt7Pg6G2AWM4OMl32/nmT2YZ+4/wbvewewnsXoLx/RvOSn7/+AT1Y3g3O3g3O9BgfZ6AMcZokKAbZHBHW/h3r38LaJDggO1FsL0I3SBDN8hgeVGOIVanZcWWi4hxluP4G9Tp+bTA8mJ0gj06wR7Uj9HqvBzBhymu7F8F3y1SP4YYZzDEqoTuzuH4G+g8RM2aoWbNcGlMj2UtEYJfZzBEWEJzJFoihOOvcyrNybFA5yHc0RY6X5RokIQhQhSXrWgFgS6W0MUSZjcCH6bQ3XmOShIqSdAggUoSFeMRivYARXsoCPgCfJiCD1OYnSXIT0tobgjqx1CaJ+ZmjLGGs4Djb6A5EuSn0PkiX1aDZH7WpaolAclSxZo1yx9WmhO0exHavQgX9V8EalviQNWcoWr+CJTmFAdU++n8f/FXfAHvyi0k4MEI4QAAAABJRU5ErkJggg==");}
         input[type="text"],input[type="password"]{ime-mode:disabled;}
         input[type="submit"]{width: 80%;cursor: pointer;text-transform: uppercase;font-weight: 700;}
@@ -116,10 +113,6 @@
         <table class="phpinfo" width="100%">
             <tr>
                 <th class="title-main" colspan="4"><?=$lang['server'].$lang['information'];?></th>
-            </tr>
-            <tr>
-                <th colspan="2" class="title-sub"><?=$lang['server'].$lang['information'];?></th>
-                <th colspan="2" class="title-sub"><?=$lang['server'].$lang['information'];?></th>
             </tr>
             <tr>
                 <th class="info-title"><?=$lang['server'].$lang['domainname'];?></th>
@@ -170,8 +163,7 @@
                 <td class="info-main"><?=$info['beijing_time'];?></td>
             </tr>
             <tr>
-                <th colspan="2" class="title-sub"><?=$lang['php'].$lang['information'];?></th>
-                <th colspan="2" class="title-sub"><?=$lang['php'].$lang['information'];?></th>
+                <th class="title-sub" colspan="4"><?=$lang['php'].$lang['information'];?></th>
             </tr>
             <tr>
                 <th class="info-title"><?=$lang['php'].$lang['version'];?></th>
@@ -314,7 +306,7 @@
                     <ul class="extends">
                     <?php
                         for ($i=0; $i < count($exte); $i++) { 
-                            echo "<li>".$exte[$i]."</li>";
+                            echo "<li class='enabled_model'><a target='_blank' href='https://www.php.net/manual/zh/book.{$exte[$i]}.php'>{$exte[$i]}</a></li>";
                         }
                     ?>
                     </ul>
@@ -358,6 +350,23 @@
                     </td>
                 </tr>
             </form>
+        </table>
+
+        <table class="phpfunction" width="100%">
+            <tr>
+                <th class="title-main" colspan="4"><?=$lang['php'].$lang['internal'].$lang['function'];?></th>
+            </tr>
+            <tr>
+                <td colspan="4" class="info-main">
+                    <ul class="functions">
+                    <?php
+                        for ($i=0; $i < count($func['internal']); $i++) { 
+                            echo "<li class='enabled_model'><a target='_blank' href='https://www.php.net/manual/zh/function.{$func['internal'][$i]}'>{$func['internal'][$i]}</a></li>";
+                        }
+                    ?>
+                    </ul>
+                </td>
+            </tr>
         </table>
 
     </main>
